@@ -1,0 +1,126 @@
+#N canvas 860 291 947 592 10;
+#X obj -1 248 i 45;
+#X obj -11 225 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj -66 199 r \$0-newNote;
+#X floatatom -65 250 5 0 0 0 - - -;
+#X obj 218 505 output~;
+#N canvas 198 274 461 357 keyInput 0;
+#X obj 34 -48 key;
+#X msg 276 -30 \; KeyFreqs read KeyFreqs.txt;
+#X obj 72 124 tabread KeyFreqs;
+#X obj 276 10 table KeyFreqs;
+#X obj 276 -57 loadbang;
+#X obj 72 149 ftom;
+#X obj 72 174 s \$0-newNote;
+#X obj 161 -52 keyup;
+#X text 25 235 TODO: setar canvas casaN pra 'ligado' qdo apertar keyN
+e 'desligar' qdo receber keyupN;
+#N canvas 854 537 450 300 setColorOn 0;
+#X obj 52 24 inlet;
+#X obj 52 49 makefilename rcasa_%c;
+#X msg 51 110 \; \$1 color 16 2;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X restore 92 66 pd setColorOn;
+#N canvas 359 593 450 300 setColorOff 0;
+#X obj 52 24 inlet;
+#X obj 52 49 makefilename rcasa_%c;
+#X symbolatom 98 76 10 0 0 0 - - -;
+#X msg 51 110 \; \$1 color 11 2;
+#X connect 0 0 1 0;
+#X connect 1 0 3 0;
+#X connect 1 0 2 0;
+#X restore 184 51 pd setColorOff;
+#X floatatom 271 71 5 0 0 0 - - -;
+#X floatatom 33 86 5 0 0 0 - - -;
+#X obj 36 -22 moses 123;
+#X obj 36 11 moses 97;
+#X obj 159 -20 moses 123;
+#X obj 159 13 moses 97;
+#X obj 72 93 - 97;
+#X connect 0 0 13 0;
+#X connect 2 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 0;
+#X connect 7 0 15 0;
+#X connect 13 0 14 0;
+#X connect 14 1 12 0;
+#X connect 14 1 9 0;
+#X connect 14 1 17 0;
+#X connect 15 0 16 0;
+#X connect 16 1 10 0;
+#X connect 16 1 11 0;
+#X connect 17 0 2 0;
+#X restore 536 36 pd keyInput;
+#X obj -162 -19 cnv 15 600 180 sback rback empty 20 12 0 14 -233017
+-66577 0;
+#X obj -157 100 cnv 10 55 55 scasa_z rcasa_z Z 20 25 0 20 -128992 -66577
+0;
+#X obj 145 -17 cnv 10 55 55 scasa_y rcasa_y Y 20 25 0 20 -128992 -66577
+0;
+#X obj -96 100 cnv 10 55 55 scasa_x rcasa_x X 20 25 0 20 -128992 -66577
+0;
+#X obj 204 -16 cnv 10 55 55 scasa_u rcasa_u U 20 25 0 20 -128992 -66577
+0;
+#X obj 85 -17 cnv 10 55 55 scasa_t rcasa_t T 20 25 0 20 -128992 -66577
+0;
+#X obj -96 40 cnv 10 55 55 scasa_s rcasa_s S 20 25 0 20 -128992 -66577
+0;
+#X obj 25 -17 cnv 10 55 55 scasa_r rcasa_r R 20 25 0 20 -128992 -66577
+0;
+#X obj -158 -18 cnv 10 55 55 scasa_q rcasa_q Q 20 25 0 20 -128992 -66577
+0;
+#X obj 381 -15 cnv 10 55 55 scasa_p rcasa_p P 20 25 0 20 -128992 -66577
+0;
+#X obj 323 -16 cnv 10 55 55 scasa_o rcasa_o O 20 25 0 20 -128992 -66577
+0;
+#X obj 145 100 cnv 10 55 55 scasa_n rcasa_n N 20 25 0 20 -128992 -66577
+0;
+#X obj 205 101 cnv 10 55 55 scasa_m rcasa_m M 20 25 0 20 -128992 -66577
+0;
+#X obj 322 42 cnv 10 55 55 scasa_l rcasa_l L 20 25 0 20 -128992 -66577
+0;
+#X obj 263 43 cnv 10 55 55 scasa_k rcasa_k K 20 25 0 20 -128992 -66577
+0;
+#X obj 204 42 cnv 10 55 55 scasa_j rcasa_j J 20 25 0 20 -128992 -66577
+0;
+#X obj 264 -17 cnv 10 55 55 scasa_i rcasa_i I 20 25 0 20 -128992 -66577
+0;
+#X obj 145 42 cnv 10 55 55 scasa_h rcasa_h H 20 25 0 20 -128992 -66577
+0;
+#X obj 85 42 cnv 10 55 55 scasa_g rcasa_g G 20 25 0 20 -128992 -66577
+0;
+#X obj 25 42 cnv 10 55 55 scasa_f rcasa_f F 20 25 0 20 -128992 -66577
+0;
+#X obj -35 -17 cnv 10 55 55 scasa_e rcasa_e E 20 25 0 20 -128992 -66577
+0;
+#X obj -35 42 cnv 10 55 55 scasa_d rcasa_d D 20 25 0 20 -128992 -66577
+0;
+#X obj -34 101 cnv 10 55 55 scasa_c rcasa_c C 20 25 0 20 -128992 -66577
+0;
+#X obj 85 100 cnv 10 55 55 scasa_b rcasa_b B 20 25 0 20 -128992 -66577
+0;
+#X obj -158 40 cnv 10 55 55 scasa_a rcasa_a A 20 25 0 20 -128992 -66577
+0;
+#X obj -97 -17 cnv 10 55 55 scasa_w rcasa_w W 20 25 0 20 -128992 -66577
+0;
+#X obj 26 100 cnv 10 55 55 scasa_v rcasa_v V 20 25 0 20 -128992 -66577
+0;
+#X obj -74 305 stringInstance;
+#X obj 101 526 outlet~;
+#X obj 198 472 *~ 0.25;
+#X text 250 466 scale the output down by approx 12dB to avoid clipping
+;
+#X obj 157 304 stringInstance;
+#X obj 387 301 stringInstance;
+#X connect 0 0 33 0;
+#X connect 1 0 0 0;
+#X connect 2 0 0 1;
+#X connect 2 0 3 0;
+#X connect 33 0 35 0;
+#X connect 35 0 34 0;
+#X connect 35 0 4 0;
+#X connect 35 0 4 1;
+#X connect 37 0 35 0;
+#X connect 38 0 35 0;

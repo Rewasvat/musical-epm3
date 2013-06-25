@@ -1,0 +1,35 @@
+#N canvas 51 152 708 301 10;
+#X obj 291 77 hsl 180 15 1 40 0 0 \$0-width \$0-width_ctrl width -2
+-8 1 10 -262144 -1 -1 3213 1;
+#X obj 290 108 hsl 180 15 0.9 0.999 0 0 \$0-decay \$0-decay_ctrl decay
+-2 -8 1 10 -262144 -1 -1 17177 1;
+#X obj 290 138 hsl 180 15 100 8000 0 0 \$0-cutoff \$0-cutoff_ctrl cutoff
+-2 -8 1 10 -262144 -1 -1 12689 1;
+#X obj -128 64 inlet;
+#X obj -128 166 karpluck~;
+#X obj -129 198 outlet~;
+#X obj -111 87 r \$0-width;
+#X obj -94 111 r \$0-decay;
+#X obj -77 134 r \$0-cutoff;
+#X obj 115 74 loadbang;
+#X msg 110 104 0.995;
+#X msg 153 104 5700;
+#X obj 80 198 s \$0-width_ctrl;
+#X obj 110 174 s \$0-decay_ctrl;
+#X obj 153 153 s \$0-cutoff_ctrl;
+#X msg 80 104 8;
+#X text -132 17 A inlet representing a string of our instrument. A
+midi note integer message to it excites this particular string at the
+specified pitch.;
+#X connect 3 0 4 0;
+#X connect 4 0 5 0;
+#X connect 6 0 4 1;
+#X connect 7 0 4 2;
+#X connect 8 0 4 3;
+#X connect 9 0 15 0;
+#X connect 9 0 10 0;
+#X connect 9 0 11 0;
+#X connect 10 0 13 0;
+#X connect 11 0 14 0;
+#X connect 15 0 12 0;
+#X coords 0 -1 1 1 200 110 1 280 50;
