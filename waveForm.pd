@@ -1,0 +1,120 @@
+#N canvas 1043 234 746 592 10;
+#X obj 493 41 inlet;
+#X obj 544 126 block~;
+#X msg 544 99 set \$1 1 1;
+#X text 485 20 Tamanho da Janela (N amostras);
+#X obj 294 42 inlet;
+#X text 283 24 Freq Fundamental;
+#X obj 333 118 expr 3*44100/$f1;
+#X text 403 100 K;
+#X obj 555 258 acos -1;
+#X obj 294 288 expr 44100*( ((3*$f3/2)-$f2) / (2*$f3*$f1) );
+#X obj 555 228 loadbang;
+#X obj 329 185 expr $f1*$f2/44100;
+#X obj 294 91 t f f f;
+#X obj 139 41 inlet~;
+#X text 143 24 Espectro de Fase;
+#X obj 166 109 table \$0-fase;
+#X msg 527 150 resize \$1;
+#X obj 94 54 bang~;
+#X obj 138 138 tabwrite~ \$0-fase;
+#X obj 329 234 tabread4 \$0-fase;
+#X obj 566 181 send \$0-fase;
+#X text 327 271 k0;
+#X text 432 230 phi;
+#X text 608 257 PI;
+#X obj 22 42 inlet~;
+#X text 10 25 Sinal Original;
+#X obj 22 137 tabwrite~ \$0-sinal;
+#X obj 164 78 table \$0-sinal;
+#X obj 96 255 loadbang;
+#X obj 96 281 f 0;
+#X obj 45 306 phasor~ 1;
+#X obj 45 229 expr 44100/$f1;
+#X obj 476 150 s \$0-N;
+#X obj 45 197 r \$0-N;
+#X obj 493 73 t f f f f;
+#X obj 339 148 s \$0-K;
+#X obj 294 322 s \$0-k-chapeu;
+#X obj 44 359 expr~ ($f2 + ($v1*$f3));
+#X obj 111 309 r \$0-k-chapeu;
+#X obj 179 335 r \$0-K;
+#X obj 44 431 tabread4~ \$0-sinal;
+#X obj 476 182 send \$0-sinal;
+#N canvas 0 0 450 300 (subpatch) 0;
+#X array \$0-formaDeOnda 1024 float 5;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#A 1000 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 1023 -1 300 200 1 0 0;
+#X restore 258 365 graph;
+#X msg 588 395 resize \$1;
+#X obj 85 487 bang~;
+#X obj 588 362 r \$0-N;
+#X obj 588 424 send \$0-formaDeOnda;
+#X obj 44 517 tabwrite~ \$0-formaDeOnda;
+#X obj 294 66 moses 0;
+#X connect 0 0 34 0;
+#X connect 2 0 1 0;
+#X connect 4 0 48 0;
+#X connect 6 0 35 0;
+#X connect 8 0 9 2;
+#X connect 9 0 36 0;
+#X connect 10 0 8 0;
+#X connect 11 0 19 0;
+#X connect 12 0 9 0;
+#X connect 12 1 11 0;
+#X connect 12 2 6 0;
+#X connect 13 0 18 0;
+#X connect 16 0 20 0;
+#X connect 16 0 41 0;
+#X connect 17 0 26 0;
+#X connect 17 0 18 0;
+#X connect 19 0 9 1;
+#X connect 24 0 26 0;
+#X connect 28 0 29 0;
+#X connect 29 0 30 1;
+#X connect 30 0 37 0;
+#X connect 31 0 30 0;
+#X connect 33 0 31 0;
+#X connect 34 0 11 1;
+#X connect 34 1 32 0;
+#X connect 34 2 16 0;
+#X connect 34 3 2 0;
+#X connect 37 0 40 0;
+#X connect 38 0 37 1;
+#X connect 39 0 37 2;
+#X connect 40 0 47 0;
+#X connect 43 0 46 0;
+#X connect 44 0 47 0;
+#X connect 45 0 43 0;
+#X connect 48 1 12 0;
+#X coords 0 -1 1 1 320 220 1 250 350;
