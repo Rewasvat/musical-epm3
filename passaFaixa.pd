@@ -1,0 +1,45 @@
+#N canvas 141 124 774 627 10;
+#X obj 60 32 inlet~;
+#X obj 60 445 outlet~;
+#X obj 59 77 fexpr~ $x[0]-$x[-2];
+#X text 138 18 IMPORTANTE: esse patch recebe o valor k como argumento
+do objeto e usa isso pra receber o valor de gamma_k dando [receive
+gammaK];
+#X obj 520 107 expr max(0.5 \, 1-tan($f1/2.0));
+#X text 613 87 alpha_k;
+#X text 330 92 omega_k;
+#X obj 520 136 s \$0-alpha;
+#X obj 233 136 s \$0-omega;
+#X obj 233 82 loadbang;
+#X obj 520 81 r \$0-omega;
+#X obj 243 264 r \$0-alpha;
+#X obj 310 200 r \$0-alpha;
+#X obj 517 204 r \$0-omega;
+#X obj 377 281 expr 2-(2*cos(2*$f1));
+#X obj 377 256 r \$0-omega;
+#X obj 310 227 expr 1+($f1*$f1)-(2*$f1*cos(2*$f2));
+#X obj 233 110 expr 2*acos(-1)*31.25*pow(2 \, \$1)/44100.0;
+#X text 247 292 beta_k;
+#X obj 293 347 r \$0-alpha;
+#X obj 176 233 r \$2-gamma\$1;
+#X obj 59 399 fexpr~ ($f2*$x[0])+(2*$f3*cos($f4)*$y[-1])-($f3*$f3*$y[-2])
+;
+#X obj 410 348 r \$0-omega;
+#X obj 176 308 expr 0.5*$f1*(1-$f2)*sqrt($f3/$f4);
+#X connect 0 0 2 0;
+#X connect 2 0 21 0;
+#X connect 4 0 7 0;
+#X connect 9 0 17 0;
+#X connect 10 0 4 0;
+#X connect 11 0 23 1;
+#X connect 12 0 16 0;
+#X connect 13 0 16 1;
+#X connect 14 0 23 3;
+#X connect 15 0 14 0;
+#X connect 16 0 23 2;
+#X connect 17 0 8 0;
+#X connect 19 0 21 2;
+#X connect 20 0 23 0;
+#X connect 21 0 1 0;
+#X connect 22 0 21 3;
+#X connect 23 0 21 1;
